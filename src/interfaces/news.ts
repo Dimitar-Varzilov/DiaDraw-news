@@ -1,16 +1,19 @@
-export interface INews {
-  id: number;
+export interface IBaseNews {
   title: string;
   content: string;
-  created_at: string;
-  type: NewsType;
   author: string;
+  type: NewsType;
+}
+
+export interface INews extends IBaseNews {
+  id: string;
+  created_at: Date;
 }
 
 export enum NewsType {
-  sport = "Sport",
-  weather = "Weather",
-  politics = "Politics",
-  funny = "Funny",
-  sad = "Sad",
+  Sport = "SPORT",
+  Weather = "WEATHER",
+  Politics = "POLITICS",
+  Funny = "FUNNY",
+  Sad = "SAD",
 }
