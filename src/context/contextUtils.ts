@@ -1,18 +1,10 @@
-import { NewsType, INews } from "../interfaces/news";
+import { INews, IBaseNews } from "../interfaces/news";
+import { v4 as uuidv4 } from "uuid";
 
-export const createNews = (
-  title: string,
-  content: string,
-  author: string,
-  type: NewsType
-) => {
-  const newNews: INews = {
-    id: Math.floor(Math.random() * 1000),
-    title,
-    content,
-    author,
-    type,
+export const createNews = (baseNews: IBaseNews): INews => {
+  return {
+    ...baseNews,
+    id: uuidv4(),
     created_at: new Date(),
   };
-  return newNews;
 };

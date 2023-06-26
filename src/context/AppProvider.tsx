@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from "react";
-import { INews, NewsType } from "../interfaces/news";
+import { IBaseNews, INews, NewsType } from "../interfaces/news";
 import { boilerplateNews } from "./boilerplateNews";
 import { createNews } from "./contextUtils";
 
@@ -9,23 +9,18 @@ export interface AppProviderProps {
 
 export interface IAppState {
   news: INews[];
-  createNews: (
-    title: string,
-    content: string,
-    author: string,
-    type: NewsType
-  ) => INews;
+  createNews: (baseNews: IBaseNews) => INews;
   addNews: (news: INews) => void;
 }
-const AppContext = createContext<IAppState | null>(null);
-
 const initialState: IAppState = {
   news: [] as INews[],
   addNews: () => {},
   createNews,
 };
-export const useAppContext = (): IAppState =>
-  AppContext === null ? useContext(AppContext) : initialState;
+
+const AppContext = createContext<IAppState>(initialState);
+
+export const useAppContext = (): IAppState => useContext(AppContext);
 
 const AppContextProvider = ({ children }: AppProviderProps) => {
   const [news, setNews] = useState<INews[]>(boilerplateNews);
