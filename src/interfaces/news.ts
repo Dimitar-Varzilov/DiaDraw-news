@@ -2,15 +2,15 @@ export interface INews {
   id: number;
   title: string;
   content: string;
-  created_at: string;
+  created_at: Date;
   type: NewsType;
   author: string;
 }
 
 export enum NewsType {
-  sport = "Sport",
-  weather = "Weather",
-  politics = "Politics",
-  funny = "Funny",
-  sad = "Sad",
+  Sport = "SPORT",
+  Weather = "WEATHER",
+  Politics = "POLITICS",
+  Funny = "FUNNY",
+  Sad = "SAD",
 }
