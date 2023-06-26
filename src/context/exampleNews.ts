@@ -1,8 +1,9 @@
 import { INews, NewsType } from "../interfaces/news";
+import { v4 as generateUUID } from "uuid";
 
-export const boilerplateNews: INews[] = [
+export const exampleNews: INews[] = [
   {
-    id: 1,
+    id: generateUUID(),
     title: "Lorem Ipsum",
     content:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum risus turpis, mollis at commodo nec, accumsan sed enim. Nunc consequat massa at velit dignissim, ut imperdiet risus feugiat. Curabitur tellus mi, auctor a velit id, luctus egestas lacus. Maecenas eu ex ac metus euismod pulvinar in nec neque. Sed lobortis gravida ipsum, eget sodales leo tempus ut. Sed luctus varius est vitae fermentum. Integer tempus, metus id pretium euismod, nibh sem molestie ante",
@@ -11,7 +12,7 @@ export const boilerplateNews: INews[] = [
     type: NewsType.Politics,
   },
   {
-    id: 2,
+    id: generateUUID(),
     title: "Lorem Ipsum",
     content:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum risus turpis, mollis at commodo nec, accumsan sed enim. Nunc consequat massa at velit dignissim, ut imperdiet risus feugiat. Curabitur tellus mi, auctor a velit id, luctus egestas lacus. Maecenas eu ex ac metus euismod pulvinar in nec neque. Sed lobortis gravida ipsum, eget sodales leo tempus ut. Sed luctus varius est vitae fermentum. Integer tempus, metus id pretium euismod, nibh sem molestie ante",
@@ -20,7 +21,7 @@ export const boilerplateNews: INews[] = [
     type: NewsType.Sport,
   },
   {
-    id: 3,
+    id: generateUUID(),
     title: "Lorem Ipsum",
     content:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum risus turpis, mollis at commodo nec, accumsan sed enim. Nunc consequat massa at velit dignissim, ut imperdiet risus feugiat. Curabitur tellus mi, auctor a velit id, luctus egestas lacus. Maecenas eu ex ac metus euismod pulvinar in nec neque. Sed lobortis gravida ipsum, eget sodales leo tempus ut. Sed luctus varius est vitae fermentum. Integer tempus, metus id pretium euismod, nibh sem molestie ante",
@@ -29,7 +30,7 @@ export const boilerplateNews: INews[] = [
     type: NewsType.Funny,
   },
   {
-    id: 4,
+    id: generateUUID(),
     title: "Lorem Ipsum",
     content:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum risus turpis, mollis at commodo nec, accumsan sed enim. Nunc consequat massa at velit dignissim, ut imperdiet risus feugiat. Curabitur tellus mi, auctor a velit id, luctus egestas lacus. Maecenas eu ex ac metus euismod pulvinar in nec neque. Sed lobortis gravida ipsum, eget sodales leo tempus ut. Sed luctus varius est vitae fermentum. Integer tempus, metus id pretium euismod, nibh sem molestie ante",
@@ -38,7 +39,7 @@ export const boilerplateNews: INews[] = [
     type: NewsType.Sad,
   },
   {
-    id: 5,
+    id: generateUUID(),
     title: "Lorem Ipsum",
     content:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum risus turpis, mollis at commodo nec, accumsan sed enim. Nunc consequat massa at velit dignissim, ut imperdiet risus feugiat. Curabitur tellus mi, auctor a velit id, luctus egestas lacus. Maecenas eu ex ac metus euismod pulvinar in nec neque. Sed lobortis gravida ipsum, eget sodales leo tempus ut. Sed luctus varius est vitae fermentum. Integer tempus, metus id pretium euismod, nibh sem molestie ante",
@@ -47,7 +48,7 @@ export const boilerplateNews: INews[] = [
     type: NewsType.Politics,
   },
   {
-    id: 6,
+    id: generateUUID(),
     title: "Lorem Ipsum",
     content:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum risus turpis, mollis at commodo nec, accumsan sed enim. Nunc consequat massa at velit dignissim, ut imperdiet risus feugiat. Curabitur tellus mi, auctor a velit id, luctus egestas lacus. Maecenas eu ex ac metus euismod pulvinar in nec neque. Sed lobortis gravida ipsum, eget sodales leo tempus ut. Sed luctus varius est vitae fermentum. Integer tempus, metus id pretium euismod, nibh sem molestie ante",
