@@ -58,8 +58,8 @@ export default function NavBar() {
   }, []);
 
   return (
-    <Navbar className="mx-auto max-w-screen-xl px-6 py-3">
-      <div className="flex items-center justify-between text-blue-gray-900">
+    <nav className="m-0 w-full px-20 py-3">
+      <div className="flex w-full items-center justify-between text-blue-gray-900">
         <Typography
           as="a"
           href="#"
@@ -90,6 +90,6 @@ export default function NavBar() {
       <Collapse open={openNav}>
         <NavList />
       </Collapse>
-    </Navbar>
+    </nav>
   );
 }
