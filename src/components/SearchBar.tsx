@@ -3,6 +3,7 @@ import { useAppContext } from "../context/AppProvider";
 import { INews } from "../interfaces/news";
 import Button from "@material-tailwind/react/components/Button";
 import Input from "@material-tailwind/react/components/Input";
+import { IconButton } from "@material-tailwind/react";
 
 type Props = {};
 
@@ -31,14 +32,14 @@ const SearchBar = (props: Props) => {
         value={query}
         onChange={handleChange}
       />
-      <Button
+      <IconButton
         size="sm"
         type="button"
-        className="!absolute right-1 top-1 rounded"
+        className="!absolute right-1 top-1 rounded bg-black"
         onClick={handleSubmit}
       >
-        Search
-      </Button>
+        <i className="fas fa-search text-white" />
+      </IconButton>
     </div>
   );
 };
