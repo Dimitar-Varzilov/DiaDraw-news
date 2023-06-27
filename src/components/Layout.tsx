@@ -7,7 +7,9 @@ type Props = { children: React.ReactNode };
 const Layout = (props: Props) => {
   return (
     <>
-      <NavBar />
+      <header>
+        <NavBar />
+      </header>
       <main>{props.children}</main>
       <Footer />
     </>

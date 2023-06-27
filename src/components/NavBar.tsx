@@ -1,6 +1,11 @@
-import { Fragment } from "react";
-import { Disclosure, Menu, Transition } from "@headlessui/react";
-import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import React from "react";
+import {
+  Navbar,
+  Collapse,
+  Typography,
+  IconButton,
+} from "@material-tailwind/react";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import SearchBar from "./SearchBar";
 
 const navigation = [{ name: "News", href: "#", current: true }];
@@ -9,40 +14,82 @@ function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function Example() {
+function NavList() {
   return (
-    <nav className="sticky">
-      <div className="sticky mx-auto px-2 sm:px-4 lg:px-20">
-        <div className="flex h-16 items-center justify-between">
-          <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-            <div className="flex flex-shrink-0 items-center">
-              <a className="block h-8 w-auto" href="/">
-                DiaDraw <span className="text-red-500">News</span>
-              </a>
-            </div>
-            <SearchBar />
-            <div className="hidden sm:ml-6 sm:block">
-              <div className="flex space-x-4">
-                {navigation.map((item) => (
-                  <a
-                    key={item.name}
-                    href={item.href}
-                    className={classNames(
-                      item.current
-                        ? "text-red-600 underline decoration-red-600"
-                        : "text-gray-300 hover:bg-gray-700 hover:text-white",
-                      "rounded-md px-3 py-2 text-sm font-medium"
-                    )}
-                    aria-current={item.current ? "page" : undefined}
-                  >
-                    {item.name}
-                  </a>
-                ))}
-              </div>
-            </div>
-          </div>
+    <ul className="my-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
+      {navigation.map((item) => (
+        <Typography
+          key={item.name}
+          as="li"
+          variant="small"
+          color="blue-gray"
+          className="p-1 font-medium"
+        >
+          <a
+            key={item.name}
+            href={item.href}
+            className={classNames(
+              item.current
+                ? "text-red-600 underline decoration-red-600"
+                : "text-gray-300 hover:text-white",
+              "flex items-center transition-colors hover:text-blue-500"
+            )}
+          >
+            {item.name}
+          </a>
+        </Typography>
+      ))}
+    </ul>
+  );
+}
+
+export default function NavBar() {
+  const [openNav, setOpenNav] = React.useState(false);
+
+  const handleWindowResize = () =>
+    window.innerWidth >= 960 && setOpenNav(false);
+
+  React.useEffect(() => {
+    window.addEventListener("resize", handleWindowResize);
+
+    return () => {
+      window.removeEventListener("resize", handleWindowResize);
+    };
+  }, []);
+
+  return (
+    <Navbar className="mx-auto max-w-screen-xl px-6 py-3">
+      <div className="flex items-center justify-between text-blue-gray-900">
+        <Typography
+          as="a"
+          href="#"
+          variant="h6"
+          className="mr-4 cursor-pointer py-1.5"
+        >
+          DiaDraw <span className="text-red-500">News</span>
+        </Typography>
+        <div className="hidden lg:block">
+          <SearchBar />
         </div>
+        <div className="hidden lg:block">
+          <NavList />
+        </div>
+        <IconButton
+          variant="text"
+          className="ml-auto h-6 w-6 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden"
+          ripple={false}
+          onClick={() => setOpenNav(!openNav)}
+        >
+          {openNav ? (
+            <XMarkIcon className="h-6 w-6" strokeWidth={2} />
+          ) : (
+            <Bars3Icon className="h-6 w-6" strokeWidth={2} />
+          )}
+        </IconButton>
       </div>
-    </nav>
+      <Collapse open={openNav}>
+        <NavList />
+      </Collapse>
+    </Navbar>
   );
 }
