@@ -9,6 +9,7 @@ const Logo = (props: Props) => {
       as="a"
       href="#"
       variant="h6"
+      color="black"
       className="mr-4 cursor-pointer py-1.5"
     >
       DiaDraw <span className="text-red-500">News</span>

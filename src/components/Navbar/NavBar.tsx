@@ -17,7 +17,7 @@ export function NavBar() {
     );
   return (
     <Navbar className="m-0 w-full max-w-full px-20 py-3">
-      <div className="flex w-full items-center justify-between text-blue-gray-900">
+      <div className="flex w-full items-center justify-between">
         <Logo />
         <div className="hidden lg:block">
           <SearchBar searchCallback={searchCallback} />
