@@ -29,7 +29,7 @@ const AppContextProvider = ({ children }: AppProviderProps) => {
   };
   return (
     <AppContext.Provider value={{ news, addNews, createNews }}>
-      {children}
+      {children as React.ReactElement}
     </AppContext.Provider>
   );
 };

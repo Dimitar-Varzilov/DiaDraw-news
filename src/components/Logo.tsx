@@ -7,7 +7,7 @@ const Logo = (props: Props) => {
   return (
     <Typography
       as="a"
-      href="#"
+      href="/"
       variant="h6"
       color="black"
       className="mr-4 cursor-pointer py-1.5"

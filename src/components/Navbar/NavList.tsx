@@ -1,6 +1,10 @@
 import { Typography } from "@material-tailwind/react";
 
-const navigation = [{ name: "News", href: "/", current: true }];
+const navigation = [
+  { name: "News", href: "/", current: true },
+  { name: "Form", href: "/form", current: true },
+  { name: "Detail", href: "/detail", current: true },
+];
 
 function NavList() {
   return (
