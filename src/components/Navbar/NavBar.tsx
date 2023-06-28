@@ -1,5 +1,5 @@
 import React from "react";
-import { Collapse,  IconButton } from "@material-tailwind/react";
+import { Collapse,  IconButton, Navbar } from "@material-tailwind/react";
 import SearchBar from "../SearchBar";
 import NavList from "./NavList";
 import Logo from "../Logo";
@@ -19,7 +19,7 @@ export function NavBar() {
   }, []);
 
   return (
-    <nav className="m-0 w-full px-20 py-3">
+    <Navbar className="m-0 w-full px-20 py-3 max-w-full">
       <div className="flex w-full items-center justify-between text-blue-gray-900">
         <Logo />
         <div className="hidden lg:block">
@@ -70,6 +70,6 @@ export function NavBar() {
       <Collapse open={openNav}>
         <NavList />
       </Collapse>
-    </nav>
+    </Navbar>
   );
 }
