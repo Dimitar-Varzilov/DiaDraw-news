@@ -1,29 +1,26 @@
 import React from "react";
-import { Collapse,  IconButton, Navbar } from "@material-tailwind/react";
+import { Collapse, IconButton, Navbar } from "@material-tailwind/react";
 import SearchBar from "../SearchBar";
 import NavList from "./NavList";
 import Logo from "../Logo";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import { useAppContext } from "../../context/AppProvider";
 
 export function NavBar() {
   const [openNav, setOpenNav] = React.useState(false);
-
-  const handleWindowResize = () =>
-    window.innerWidth >= 960 && setOpenNav(false);
-
-  React.useEffect(() => {
-    window.addEventListener("resize", handleWindowResize);
-
-    return () => {
-      window.removeEventListener("resize", handleWindowResize);
-    };
-  }, []);
-
+  const { news } = useAppContext();
+  const searchCallback = (query: string) =>
+    console.log(
+      news.filter((news) =>
+        news.title.toLowerCase().includes(query.toLowerCase())
+      )
+    );
   return (
-    <Navbar className="m-0 w-full px-20 py-3 max-w-full">
+    <Navbar className="m-0 w-full max-w-full px-20 py-3">
       <div className="flex w-full items-center justify-between text-blue-gray-900">
         <Logo />
         <div className="hidden lg:block">
-          <SearchBar />
+          <SearchBar searchCallback={searchCallback} />
         </div>
         <div className="hidden lg:block">
           <NavList />
@@ -35,35 +32,9 @@ export function NavBar() {
           onClick={() => setOpenNav(!openNav)}
         >
           {openNav ? (
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="h-6 w-6"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M6 18L18 6M6 6l12 12"
-              />
-            </svg>
+            <XMarkIcon className="h-6 w-6" strokeWidth={2} />
           ) : (
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="h-6 w-6"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-              />
-            </svg>
+            <Bars3Icon className="h-6 w-6" strokeWidth={2} />
           )}
         </IconButton>
       </div>
