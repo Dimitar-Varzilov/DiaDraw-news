@@ -1,16 +1,35 @@
 import "./App.css";
-import AppContextProvider from "./context/AppProvider";
 import Home from "./pages/Home";
 import Layout from "./components/Layout";
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
+import Form from "./pages/Form";
+import Detail from "./pages/Detail";
 
-function App() {
-  return (
-    <AppContextProvider>
-      <Layout>
-        <Home />
-      </Layout>
-    </AppContextProvider>
-  );
+const router = createBrowserRouter([
+  {
+    path: "*",
+    Component: () => <div>Page Not Found</div>,
+  },
+  {
+    path: "/",
+    Component: Layout,
+    children: [
+      { index: true, Component: Home },
+      {
+        path: "addNews",
+        Component: Form,
+      },
+      {
+        path: "newsDetail/:id",
+        Component: Detail,
+      },
+    ],
+  },
+]);
+
+export default function App() {
+  return <RouterProvider router={router} />;
 }
-
-export default App;

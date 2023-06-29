@@ -1,18 +1,19 @@
 import React from "react";
 import { NavBar } from "./Navbar";
 import Footer from "./Footer";
+import { Outlet } from "react-router-dom";
+import AppContextProvider from "../context/AppProvider";
+import Header from "./Header";
 
-type Props = { children: React.ReactNode };
-
-const Layout = (props: Props) => {
+const Layout: React.FunctionComponent = () => {
   return (
-    <>
-      <header>
-        <NavBar />
-      </header>
-      <main>{props.children}</main>
+    <AppContextProvider>
+      <Header />
+      <main>
+        <Outlet />
+      </main>
       <Footer />
-    </>
+    </AppContextProvider>
   );
 };
 
