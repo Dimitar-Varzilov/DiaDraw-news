@@ -3,13 +3,14 @@ import { NavBar } from "./Navbar";
 import Footer from "./Footer";
 import { Outlet } from "react-router-dom";
 import AppContextProvider from "../context/AppProvider";
+import Header from "./Header";
 
 const Layout: React.FunctionComponent = () => {
   return (
     <AppContextProvider>
-      <header>
+      <Header>
         <NavBar />
-      </header>
+      </Header>
       <main>
         <Outlet />
       </main>
