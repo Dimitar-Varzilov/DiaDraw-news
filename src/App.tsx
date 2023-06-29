@@ -25,7 +25,6 @@ const router = createBrowserRouter([
       {
         path: "newsDetail/:id",
         Component: Detail,
-        id: ":id",
       },
     ],
   },
