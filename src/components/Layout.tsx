@@ -2,11 +2,11 @@ import React from "react";
 import { NavBar } from "./Navbar";
 import Footer from "./Footer";
 import { Outlet } from "react-router-dom";
-
+import AppContextProvider from "../context/AppProvider";
 
 const Layout: React.FunctionComponent = () => {
   return (
-    <>
+    <AppContextProvider>
       <header>
         <NavBar />
       </header>
@@ -14,7 +14,7 @@ const Layout: React.FunctionComponent = () => {
         <Outlet />
       </main>
       <Footer />
-    </>
+    </AppContextProvider>
   );
 };
 

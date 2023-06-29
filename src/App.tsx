@@ -19,7 +19,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/",
-    Component: AppContextProvider,
+    Component: Layout,
     children: [
       { index: true, Component: Home },
       {
@@ -36,14 +36,4 @@ const router = createBrowserRouter([
 
 export default function App() {
   return <RouterProvider router={router} />;
-}
-
-function Root() {
-  return (
-    <AppContextProvider>
-      {/* <Layout>
-        <Home />
-      </Layout> */}
-    </AppContextProvider>
-  );
 }
