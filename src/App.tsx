@@ -1,13 +1,9 @@
 import "./App.css";
-import AppContextProvider from "./context/AppProvider";
 import Home from "./pages/Home";
 import Layout from "./components/Layout";
 import {
   createBrowserRouter,
-  Link,
-  Route,
   RouterProvider,
-  Routes,
 } from "react-router-dom";
 import Form from "./pages/Form";
 import Detail from "./pages/Detail";
@@ -23,12 +19,13 @@ const router = createBrowserRouter([
     children: [
       { index: true, Component: Home },
       {
-        path: "/form",
+        path: "addNews",
         Component: Form,
       },
       {
-        path: "/detail",
+        path: "newsDetail/:id",
         Component: Detail,
+        id: ":id",
       },
     ],
   },

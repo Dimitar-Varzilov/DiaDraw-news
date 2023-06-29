@@ -1,10 +1,7 @@
 import { Typography } from "@material-tailwind/react";
+import { Link } from "react-router-dom";
 
-const navigation = [
-  { name: "News", href: "/", current: true },
-  { name: "Form", href: "/form", current: true },
-  { name: "Detail", href: "/detail", current: true },
-];
+const navigation = [{ name: "News", href: "/", current: true }];
 
 function NavList() {
   return (
@@ -17,9 +14,9 @@ function NavList() {
           color="blue-gray"
           className="p-1 font-medium"
         >
-          <a
+          <Link
             key={item.name}
-            href={item.href}
+            to={item.href}
             className={`flex items-center transition-colors hover:text-blue-500 
             ${
               item.current
@@ -28,7 +25,7 @@ function NavList() {
             }`}
           >
             {item.name}
-          </a>
+          </Link>
         </Typography>
       ))}
     </ul>

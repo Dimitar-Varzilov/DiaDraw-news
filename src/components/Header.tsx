@@ -1,12 +1,10 @@
-import React from "react";
+import { NavBar } from "./Navbar";
 
-type Props = { children: React.ReactNode };
-
-const Header = ({ children }: Props) => {
+const Header = () => {
   return (
-    <>
-      <header>{children}</header>
-    </>
+    <header>
+      <NavBar />
+    </header>
   );
 };
 

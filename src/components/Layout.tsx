@@ -8,9 +8,7 @@ import Header from "./Header";
 const Layout: React.FunctionComponent = () => {
   return (
     <AppContextProvider>
-      <Header>
-        <NavBar />
-      </Header>
+      <Header />
       <main>
         <Outlet />
       </main>
