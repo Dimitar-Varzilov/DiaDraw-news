@@ -59,11 +59,10 @@ export default function CardComponent({
         <Button
           variant="text"
           color="red"
-          className="flex max-w-max items-center gap-2 border-2 border-primary"
+          className="w-max border-2 border-primary"
           onClick={onButtonClick}
         >
           Read more
-          <ArrowLongRightIcon strokeWidth={2} className="h-4 w-4" />
         </Button>
       </CardFooter>
     </Card>
