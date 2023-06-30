@@ -8,7 +8,7 @@ export const exampleNews: INews[] = [
     content:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum risus turpis, mollis at commodo nec, accumsan sed enim. Nunc consequat massa at velit dignissim, ut imperdiet risus feugiat. Curabitur tellus mi, auctor a velit id, luctus egestas lacus. Maecenas eu ex ac metus euismod pulvinar in nec neque. Sed lobortis gravida ipsum, eget sodales leo tempus ut. Sed luctus varius est vitae fermentum. Integer tempus, metus id pretium euismod, nibh sem molestie ante",
     author: "John Doe",
-    created_at: new Date("2021-01-01"),
+    created_at: new Date("2023-06-30 16:00"),
     type: NewsType.Politics,
   },
   {
@@ -17,7 +17,7 @@ export const exampleNews: INews[] = [
     content:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum risus turpis, mollis at commodo nec, accumsan sed enim. Nunc consequat massa at velit dignissim, ut imperdiet risus feugiat. Curabitur tellus mi, auctor a velit id, luctus egestas lacus. Maecenas eu ex ac metus euismod pulvinar in nec neque. Sed lobortis gravida ipsum, eget sodales leo tempus ut. Sed luctus varius est vitae fermentum. Integer tempus, metus id pretium euismod, nibh sem molestie ante",
     author: "John Doe",
-    created_at: new Date("2021-01-01"),
+    created_at: new Date("2023-06-30 10:00"),
     type: NewsType.Sport,
   },
   {
@@ -26,7 +26,7 @@ export const exampleNews: INews[] = [
     content:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum risus turpis, mollis at commodo nec, accumsan sed enim. Nunc consequat massa at velit dignissim, ut imperdiet risus feugiat. Curabitur tellus mi, auctor a velit id, luctus egestas lacus. Maecenas eu ex ac metus euismod pulvinar in nec neque. Sed lobortis gravida ipsum, eget sodales leo tempus ut. Sed luctus varius est vitae fermentum. Integer tempus, metus id pretium euismod, nibh sem molestie ante",
     author: "John Doe",
-    created_at: new Date("2021-01-01"),
+    created_at: new Date("2023-06-27"),
     type: NewsType.Funny,
   },
   {
