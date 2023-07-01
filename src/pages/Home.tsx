@@ -1,4 +1,5 @@
-import CardComponent from "../components/CardCardComponent";
+import CardComponent from "../components/CardComponent";
+import Example from "../components/SpeedDial";
 import { useAppContext } from "../context/AppProvider";
 type Props = {};
 
@@ -7,7 +8,7 @@ const Home = (props: Props) => {
 
   return (
     <div className="pb-2 pt-10">
-      <div className="flex flex-col items-center justify-center gap-4">
+      <div className="flex w-fit-content flex-col items-center justify-center gap-4">
         {news.map((item) => (
           <CardComponent
             key={item.id}
@@ -19,6 +20,7 @@ const Home = (props: Props) => {
           />
         ))}
       </div>
+      <Example />
     </div>
   );
 };
