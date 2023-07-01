@@ -29,7 +29,7 @@ export default function CardComponent({
   const navigate = useNavigate();
   const onButtonClick = () => navigate(`/newsDetail/${id}`);
   return (
-    <Card className="flex max-h-64 w-[70%] flex-row border-2 border-black">
+    <Card className="relative flex w-[70%] flex-row border-2 border-black">
       <CardHeader
         shadow={false}
         floated={false}
@@ -52,10 +52,8 @@ export default function CardComponent({
           {type}
         </Button>
       </CardBody>
-      <CardFooter className="flex flex-col justify-between">
-        <Typography color="red">
-          <LastSeen date={dateOfCreate} />
-        </Typography>
+      <CardFooter className="flex justify-between lg:flex-col">
+        <LastSeen date={dateOfCreate} color="red" />
         <Button
           variant="text"
           color="red"
