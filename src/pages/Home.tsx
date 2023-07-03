@@ -1,25 +1,36 @@
-import { useState } from "react";
+import React from "react";
+import { PlusIcon } from "@heroicons/react/24/outline";
+import CardComponent from "../components/CardComponent";
+import SpeedDial from "../components/SpeedDial";
+import { useAppContext } from "../context/AppProvider";
+import { Link } from "react-router-dom";
+import { Typography } from "@material-tailwind/react";
 
-type Props = {};
+const Home = () => {
+  const { news } = useAppContext();
 
-const Home = (props: Props) => {
-  const [count, setCount] = useState(0);
   return (
-    <div>
-      <img className="logo" src="vite.svg" alt="Vite icon" />
-      <img className="logo" src="react.svg" alt="React icon" />
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
+    <div className="pb-2 pt-10">
+      <div className="w-fit-content flex flex-col items-center justify-center gap-4">
+        {news.map((item) => (
+          <CardComponent
+            key={item.id}
+            id={item.id}
+            title={item.title}
+            content={item.content.substring(0, 150).concat("...")}
+            newsAdded={item.created_at}
+            type={item.type}
+          />
+        ))}
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <SpeedDial>
+        <Link to={"addNews"} className="flex flex-col items-center">
+          <PlusIcon className="h-5 w-5" />
+          <Typography color="gray" className="text-xs font-normal">
+            Add News
+          </Typography>
+        </Link>
+      </SpeedDial>
     </div>
   );
 };
