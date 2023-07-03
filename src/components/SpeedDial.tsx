@@ -1,42 +1,36 @@
 import {
   IconButton,
-  SpeedDial,
+  SpeedDial as SpeedDialComponent,
   SpeedDialHandler,
   SpeedDialContent,
   SpeedDialAction,
-  Typography,
 } from "@material-tailwind/react";
 import { PlusIcon } from "@heroicons/react/24/outline";
-import { Link } from "react-router-dom";
+import React, { ReactNode, Children } from "react";
 
-const actions = [
-  {
-    icon: <PlusIcon />,
-    name: "Add",
-    link: "/addNews",
-  },
-];
+type SpeedDialProps = {
+  children: ReactNode;
+};
 
-export default function Example() {
+const SpeedDial: React.FC<SpeedDialProps> = ({ children }) => {
   return (
     <div className="fixed bottom-5 right-5">
-      <SpeedDial>
+      <SpeedDialComponent>
         <SpeedDialHandler>
           <IconButton size="lg" className="rounded-full">
             <PlusIcon className="h-5 w-5 transition-transform group-hover:rotate-45" />
           </IconButton>
         </SpeedDialHandler>
         <SpeedDialContent>
-          {actions.map((action) => (
-            <Link to={action.link} key={action.name}>
-              <SpeedDialAction className="h-16 w-16">
-                {action.icon}
-                <Typography color="gray">{action.name}</Typography>
-              </SpeedDialAction>
-            </Link>
+          {Children.map(children, (child, index) => (
+            <SpeedDialAction className="h-16 w-16" key={index}>
+              {child}
+            </SpeedDialAction>
           ))}
         </SpeedDialContent>
-      </SpeedDial>
+      </SpeedDialComponent>
     </div>
   );
-}
+};
+
+export default SpeedDial;

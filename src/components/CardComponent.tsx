@@ -1,3 +1,4 @@
+import React from "react";
 import {
   Card,
   CardHeader,
@@ -6,8 +7,6 @@ import {
   Button,
   CardFooter,
 } from "@material-tailwind/react";
-import { ArrowLongRightIcon } from "@heroicons/react/24/outline";
-import { useAppContext } from "../context/AppProvider";
 import { NewsType } from "../interfaces/news";
 import { useNavigate } from "react-router";
 import LastSeen from "./LastSeen";
@@ -16,14 +15,14 @@ type Props = {
   id: string;
   title: string;
   content: string;
-  dateOfCreate: Date;
+  newsAdded: Date;
   type: NewsType;
 };
 export default function CardComponent({
   id,
   title,
   content,
-  dateOfCreate,
+  newsAdded,
   type,
 }: Props): React.ReactElement {
   const navigate = useNavigate();
@@ -53,7 +52,7 @@ export default function CardComponent({
         </Button>
       </CardBody>
       <CardFooter className="flex justify-between lg:flex-col">
-        <LastSeen date={dateOfCreate} color="red" />
+        <LastSeen date={newsAdded} color="red" />
         <Button
           variant="text"
           color="red"

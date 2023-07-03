@@ -5,7 +5,7 @@ export default withMT({
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
-      colors: { primary: "rgb(255, 0, 0)", secondary: "#3f51b5" },
+      colors: { primary: "rgb(255, 0, 0)", secondary: "rgb(63, 81, 181)" },
     },
   },
   plugins: [],

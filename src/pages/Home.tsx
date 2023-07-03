@@ -1,26 +1,36 @@
+import React from "react";
+import { PlusIcon } from "@heroicons/react/24/outline";
 import CardComponent from "../components/CardComponent";
-import Example from "../components/SpeedDial";
+import SpeedDial from "../components/SpeedDial";
 import { useAppContext } from "../context/AppProvider";
-type Props = {};
+import { Link } from "react-router-dom";
+import { Typography } from "@material-tailwind/react";
 
-const Home = (props: Props) => {
+const Home = () => {
   const { news } = useAppContext();
 
   return (
     <div className="pb-2 pt-10">
-      <div className="flex w-fit-content flex-col items-center justify-center gap-4">
+      <div className="w-fit-content flex flex-col items-center justify-center gap-4">
         {news.map((item) => (
           <CardComponent
             key={item.id}
             id={item.id}
             title={item.title}
             content={item.content.substring(0, 150).concat("...")}
-            dateOfCreate={item.created_at}
+            newsAdded={item.created_at}
             type={item.type}
           />
         ))}
       </div>
-      <Example />
+      <SpeedDial>
+        <Link to={"addNews"} className="flex flex-col items-center">
+          <PlusIcon className="h-5 w-5" />
+          <Typography color="gray" className="text-xs font-normal">
+            Add News
+          </Typography>
+        </Link>
+      </SpeedDial>
     </div>
   );
 };
