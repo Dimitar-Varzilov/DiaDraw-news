@@ -11,9 +11,9 @@ export interface INews extends IBaseNews {
 }
 
 export enum NewsType {
+  Funny = "FUNNY",
+  Politics = "POLITICS",
+  Sad = "SAD",
   Sport = "SPORT",
   Weather = "WEATHER",
-  Politics = "POLITICS",
-  Funny = "FUNNY",
-  Sad = "SAD",
 }
