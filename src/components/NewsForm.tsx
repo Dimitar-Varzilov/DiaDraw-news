@@ -62,7 +62,6 @@ const newsTypeOptions: NewsOptions[] = Object.entries(NewsType).map(
 );
 const NewsForm: React.FC<NewsFormProps> = ({ onCancel, onSubmit }) => {
   const [formData, setFormData] = useState<IBaseNews | INews>(initialState);
-  const formRef = useRef<HTMLFormElement | null>(null);
   const [formTouched, setFormTouched] = useState(false);
   const hasError = (name: string) =>
     formTouched && formData[name as keyof IBaseNews].length === 0;
@@ -72,14 +71,11 @@ const NewsForm: React.FC<NewsFormProps> = ({ onCancel, onSubmit }) => {
   ) => {
     ev.preventDefault();
     ev.stopPropagation();
-    console.clear();
-    console.log(formData);
     onSubmit(formData);
   };
   return (
     <Card color="transparent" shadow={false}>
       <form
-        ref={formRef}
         className="mb-2 mt-8 w-80 max-w-screen-lg sm:w-96"
         action=""
         onSubmit={handleSubmit}
@@ -113,12 +109,6 @@ const NewsForm: React.FC<NewsFormProps> = ({ onCancel, onSubmit }) => {
           ))}
 
           <Select
-            // selected={(el, index) =>
-            //   setFormData({
-            //     ...formData,
-            //     type: newsTypeValues[index!],
-            //   })
-            // }
             value={formData.type}
             onChange={(value) => {
               console.log(value);
