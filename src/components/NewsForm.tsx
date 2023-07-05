@@ -1,15 +1,17 @@
 import {
   Card,
+  Typography,
+  Checkbox,
   Button,
   Input,
   Textarea,
   Select,
   Option,
 } from "@material-tailwind/react";
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { FormInput } from "../interfaces/formFields";
+import { useNavigate } from "react-router-dom";
 import { IBaseNews, INews, NewsType } from "../interfaces/news";
-
 
 export type NewsFormProps = {
   onCancel(): void;
@@ -84,9 +86,9 @@ const NewsForm: React.FC<NewsFormProps> = ({ onCancel, onSubmit }) => {
                 onChange={(ev) => {
                   setFormData({ ...formData, [name]: ev.target.value });
                 }}
-                error={hasError(name)}
-                success={formData[name as keyof IBaseNews].length > 0}
-                value={formData[name as keyof IBaseNews]}
+                error={formTouched && hasError(name)}
+                success={formData[name as keyof IBaseNews]!.length > 0}
+                value={formData[name as keyof IBaseNews]!}
               />
               <p
                 className={`font-light text-red-700 ${
