@@ -1,6 +1,6 @@
 import React from "react";
 import {
-  Card,
+  Card as MaterialCard,
   CardHeader,
   CardBody,
   Typography,
@@ -18,7 +18,7 @@ type Props = {
   newsAdded: Date;
   type: NewsType;
 };
-export default function CardComponent({
+export default function Card({
   id,
   title,
   content,
@@ -28,7 +28,7 @@ export default function CardComponent({
   const navigate = useNavigate();
   const onButtonClick = () => navigate(`/newsDetail/${id}`);
   return (
-    <Card className="relative flex w-[70%] flex-row border-2 border-black">
+    <MaterialCard className="relative flex w-[70%] flex-row border-2 border-black">
       <CardHeader
         shadow={false}
         floated={false}
@@ -62,6 +62,6 @@ export default function CardComponent({
           Read more
         </Button>
       </CardFooter>
-    </Card>
+    </MaterialCard>
   );
 }

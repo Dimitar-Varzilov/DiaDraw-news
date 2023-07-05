@@ -1,6 +1,6 @@
 import React from "react";
 import { PlusIcon } from "@heroicons/react/24/outline";
-import CardComponent from "../components/CardComponent";
+import Card from "../components/Card";
 import SpeedDial from "../components/SpeedDial";
 import { useAppContext } from "../context/AppProvider";
 import { Link } from "react-router-dom";
@@ -12,14 +12,14 @@ const Home = () => {
   return (
     <div className="pb-2 pt-10">
       <div className="w-fit-content flex flex-col items-center justify-center gap-4">
-        {news.map((item) => (
-          <CardComponent
-            key={item.id}
-            id={item.id}
-            title={item.title}
-            content={item.content.substring(0, 150).concat("...")}
-            newsAdded={item.created_at}
-            type={item.type}
+        {news.map(({ id, title, content, created_at, type }) => (
+          <Card
+            key={id}
+            id={id}
+            title={title}
+            content={content.substring(0, 150).concat("...")}
+            newsAdded={created_at}
+            type={type}
           />
         ))}
       </div>

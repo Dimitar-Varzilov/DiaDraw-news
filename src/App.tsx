@@ -1,12 +1,9 @@
 import "./App.css";
 import Home from "./pages/Home";
 import Layout from "./components/Layout";
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
-import Form from "./pages/Form";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Detail from "./pages/Detail";
+import AddNews from "./pages/AddNews";
 
 const router = createBrowserRouter([
   {
@@ -20,7 +17,7 @@ const router = createBrowserRouter([
       { index: true, Component: Home },
       {
         path: "addNews",
-        Component: Form,
+        Component: AddNews,
       },
       {
         path: "newsDetail/:id",
