@@ -1,5 +1,6 @@
+import React from "react";
 import { createContext, useContext, useState } from "react";
-import { IBaseNews, INews, NewsType } from "../interfaces/news";
+import { IBaseNews, INews } from "../interfaces/news";
 import { exampleNews } from "./exampleNews";
 import { createNews } from "./contextUtils";
 
@@ -14,7 +15,7 @@ export interface IAppState {
 }
 const initialState: IAppState = {
   news: [],
-  addNews: (news: INews) => {},
+  addNews: (news: INews) => news,
   createNews,
 };
 

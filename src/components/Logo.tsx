@@ -1,9 +1,8 @@
+import React from "react";
 import Typography from "@material-tailwind/react/components/Typography";
 import { Link } from "react-router-dom";
 
-type Props = {};
-
-const Logo = (props: Props) => {
+const Logo = () => {
   return (
     <Typography
       variant="h6"
