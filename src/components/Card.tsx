@@ -28,7 +28,7 @@ export default function Card({
   const navigate = useNavigate();
   const onButtonClick = () => navigate(`/newsDetail/${id}`);
   return (
-    <MaterialCard className="relative flex w-[70%] flex-row border-2 border-black">
+    <MaterialCard className="flex w-[70%] flex-row border-2 border-black">
       <CardHeader
         shadow={false}
         floated={false}

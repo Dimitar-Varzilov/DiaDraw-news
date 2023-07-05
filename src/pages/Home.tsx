@@ -11,13 +11,15 @@ const Home = () => {
 
   return (
     <div className="pb-2 pt-10">
-      <div className="w-fit-content flex flex-col items-center justify-center gap-4">
+      <div className="flex flex-col items-center justify-center gap-4">
         {news.map(({ id, title, content, created_at, type }) => (
           <Card
             key={id}
             id={id}
             title={title}
-            content={content.substring(0, 150).concat("...")}
+            content={content
+              .substring(0, 150)
+              .concat(`${content.length <= 150 ? "" : "..."}`)}
             newsAdded={created_at}
             type={type}
           />

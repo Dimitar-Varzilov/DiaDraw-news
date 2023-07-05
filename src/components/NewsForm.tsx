@@ -1,30 +1,20 @@
 import {
   Card,
-  Typography,
-  Checkbox,
   Button,
   Input,
   Textarea,
   Select,
   Option,
 } from "@material-tailwind/react";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 import { FormInput } from "../interfaces/formFields";
-import { useNavigate } from "react-router-dom";
 import { IBaseNews, INews, NewsType } from "../interfaces/news";
 
-type FormState = {
-  [key: string]: string | NewsType | null;
-};
 
 export type NewsFormProps = {
   onCancel(): void;
   onSubmit(formData: IBaseNews | INews): void;
 };
-
-// interface FormState extends IBaseNews {
-//   type: NewsType | null;
-// }
 
 const inputs: FormInput[] = [
   {
@@ -94,9 +84,9 @@ const NewsForm: React.FC<NewsFormProps> = ({ onCancel, onSubmit }) => {
                 onChange={(ev) => {
                   setFormData({ ...formData, [name]: ev.target.value });
                 }}
-                error={formTouched && hasError(name)}
-                success={formData[name as keyof IBaseNews]!.length > 0}
-                value={formData[name as keyof IBaseNews]!}
+                error={hasError(name)}
+                success={formData[name as keyof IBaseNews].length > 0}
+                value={formData[name as keyof IBaseNews]}
               />
               <p
                 className={`font-light text-red-700 ${
@@ -111,7 +101,6 @@ const NewsForm: React.FC<NewsFormProps> = ({ onCancel, onSubmit }) => {
           <Select
             value={formData.type}
             onChange={(value) => {
-              console.log(value);
               setFormData((curr) => {
                 return {
                   ...curr,
@@ -134,7 +123,7 @@ const NewsForm: React.FC<NewsFormProps> = ({ onCancel, onSubmit }) => {
               required
               resize
               error={hasError("content")}
-              success={formData.content!.length > 0}
+              success={formData.content.length > 0}
               onChange={(ev) => {
                 setFormData({ ...formData, content: ev.target.value });
               }}
