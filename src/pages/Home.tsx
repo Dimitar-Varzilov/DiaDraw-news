@@ -9,6 +9,12 @@ import { Typography } from "@material-tailwind/react";
 const Home = () => {
   const { news } = useAppContext();
 
+  const getContentSummary = (content: string, length = 150) => {
+    if (content.length <= length) return content;
+
+    return content.substring(0, length).concat("...");
+  };
+
   return (
     <div className="pb-2 pt-10">
       <div className="flex flex-col items-center justify-center gap-4">
@@ -17,9 +23,7 @@ const Home = () => {
             key={id}
             id={id}
             title={title}
-            content={content
-              .substring(0, 150)
-              .concat(`${content.length <= 150 ? "" : "..."}`)}
+            content={getContentSummary(content)}
             newsAdded={created_at}
             type={type}
           />
