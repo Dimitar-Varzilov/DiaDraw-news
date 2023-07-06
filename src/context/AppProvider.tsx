@@ -25,7 +25,11 @@ export const useAppContext = (): IAppState => useContext(AppContext);
 const AppContextProvider = ({ children }: AppProviderProps) => {
   const [news, setNews] = useState<INews[]>(exampleNews);
   const addNews = (newNews: INews) => {
-    setNews((prev) => [...prev, newNews]);
+    setNews((prev) => {
+      return [...prev, newNews].sort(
+        (a: INews, b: INews) => b.created_at.getTime() - a.created_at.getTime()
+      );
+    });
   };
   return (
     <AppContext.Provider value={{ news, addNews, createNews }}>

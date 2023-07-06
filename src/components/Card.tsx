@@ -32,7 +32,7 @@ export default function Card({
       <CardHeader
         shadow={false}
         floated={false}
-        className="m-0 w-2/5 shrink-0 rounded-r-none"
+        className="mb-4 w-64 flex-none"
       >
         <img
           src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80"
@@ -40,7 +40,7 @@ export default function Card({
           className="h-full w-full object-cover"
         />
       </CardHeader>
-      <CardBody className="flex flex-col justify-between">
+      <CardBody className="flex grow-[2] flex-col justify-between">
         <Typography variant="h4" color="blue-gray" className="mb-2">
           {title}
         </Typography>
@@ -51,7 +51,7 @@ export default function Card({
           {type}
         </Button>
       </CardBody>
-      <CardFooter className="flex justify-between lg:flex-col">
+      <CardFooter className="flex flex-none items-center justify-between lg:flex-col">
         <LastSeen date={newsAdded} color="red" />
         <Button
           variant="text"

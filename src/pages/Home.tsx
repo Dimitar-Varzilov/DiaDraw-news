@@ -9,15 +9,21 @@ import { Typography } from "@material-tailwind/react";
 const Home = () => {
   const { news } = useAppContext();
 
+  const getContentSummary = (content: string, length = 150) => {
+    if (content.length <= length) return content;
+
+    return content.substring(0, length).concat("...");
+  };
+
   return (
     <div className="pb-2 pt-10">
-      <div className="w-fit-content flex flex-col items-center justify-center gap-4">
+      <div className="flex flex-col items-center justify-center gap-4">
         {news.map(({ id, title, content, created_at, type }) => (
           <Card
             key={id}
             id={id}
             title={title}
-            content={content.substring(0, 150).concat("...")}
+            content={getContentSummary(content)}
             newsAdded={created_at}
             type={type}
           />
