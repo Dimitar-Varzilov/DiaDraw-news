@@ -8,32 +8,34 @@ import {
   CardFooter,
 } from "@material-tailwind/react";
 import { NewsType } from "../../interfaces/news";
-import { useNavigate } from "react-router";
 import LastSeen from "../LastSeen";
 import { CardType } from "./CardType";
 
 type Props = {
-  id: string;
   title: string;
-  content: string;
-  newsAdded: Date;
-  type: NewsType;
+  small?: boolean;
+  content?: string;
+  newsAdded?: Date;
+  type?: NewsType;
+  onClick: () => void;
 };
 const Card: React.FC<Props> = ({
-  id,
   title,
   content,
   newsAdded,
   type,
+  small,
+  onClick,
 }: Props) => {
-  const navigate = useNavigate();
-  const onButtonClick = () => navigate(`/newsDetail/${id}`);
   return (
-    <MaterialCard className="relative flex w-[70%] flex-row border-2 border-black">
+    <MaterialCard
+      className="relative flex w-full flex-row border-2 border-black"
+      onClick={() => small && onClick()}
+    >
       <CardHeader
         shadow={false}
         floated={false}
-        className="mb-4 w-64 flex-none"
+        className={`mb-4 ${small ? "w-32" : "w-64"} flex-none`}
       >
         <img
           src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80"
@@ -45,22 +47,28 @@ const Card: React.FC<Props> = ({
         <Typography variant="h4" color="blue-gray" className="mb-2">
           {title}
         </Typography>
-        <Typography color="gray" className="mb-8 font-normal">
-          {content}
-        </Typography>
-        <CardType type={type} />
+        {!small && content && (
+          <>
+            <Typography color="gray" className="mb-8 font-normal">
+              {content}
+            </Typography>
+            {type && <CardType type={type} />}
+          </>
+        )}
       </CardBody>
-      <CardFooter className="flex flex-none items-center justify-between lg:flex-col">
-        <LastSeen date={newsAdded} color="red" />
-        <Button
-          variant="text"
-          color="red"
-          className="w-max border-2 border-primary"
-          onClick={onButtonClick}
-        >
-          Read more
-        </Button>
-      </CardFooter>
+      {!small && (
+        <CardFooter className="flex flex-none items-center justify-between lg:flex-col">
+          {newsAdded && <LastSeen date={newsAdded} color="red" />}
+          <Button
+            variant="text"
+            color="red"
+            className="w-max border-2 border-primary"
+            onClick={onClick}
+          >
+            Read more
+          </Button>
+        </CardFooter>
+      )}
     </MaterialCard>
   );
 };

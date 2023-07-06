@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { useAppContext } from "../context/AppProvider";
 import { useParams } from "react-router";
 import {
-  Card,
+  Card as MaterialCard,
   CardBody,
   CardHeader,
   Typography,
 } from "@material-tailwind/react";
 import { useNavigate } from "react-router-dom";
-import { getSummary } from "../utils/newsUtils";
+
+import { useAppContext } from "../context/AppProvider";
 import { INews } from "../interfaces/news";
+import { getSummary } from "../utils/newsUtils";
+import Card from "../components/Card";
 
 const Detail: React.FC = () => {
   const { getNewsById, getRelatedNews } = useAppContext();
@@ -27,17 +29,17 @@ const Detail: React.FC = () => {
   }, [id]);
 
   return (
-    <div className="flex h-screen">
-      <article className="w-2/3 grow-[2] p-10 py-24">
+    <div className="flex">
+      <article className="w-2/3 p-10 py-24">
         {newsToShow ? (
-          <Card>
+          <MaterialCard>
             <CardHeader>
               <Typography variant="h4" className="text-center">
                 {newsToShow.title}
               </Typography>
             </CardHeader>
             <CardBody>{newsToShow.content}</CardBody>
-          </Card>
+          </MaterialCard>
         ) : (
           <Typography variant="h3">News not found</Typography>
         )}
@@ -47,21 +49,12 @@ const Detail: React.FC = () => {
           Related News
         </Typography>
         {relatedNews.map(({ id, title }) => (
-          <div
-            key={id}
-            className="flex gap-2"
-            onClick={() => navigate(`/newsDetail/${id}`, { replace: true })}
-          >
-            <div className="w-1/4 flex-none">
-              <img
-                src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80"
-                alt="image"
-                className="rounded-md object-cover"
-              />
-            </div>
-            <div>
-              <Typography className="3/4">{getSummary(title, 80)}</Typography>
-            </div>
+          <div key={id} className="flex gap-2">
+            <Card
+              title={getSummary(title, 80)}
+              small
+              onClick={() => navigate(`/newsDetail/${id}`, { replace: true })}
+            />
           </div>
         ))}
       </aside>
