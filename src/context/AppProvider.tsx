@@ -59,16 +59,17 @@ const AppContextProvider = ({ children }: AppProviderProps) => {
     const newsFound = getNewsById(id);
     let results: INews[] = [];
     if (!newsFound) return results;
-    if (options) {
-      const { resultsCount, includeSelf } = options;
-      results = news.filter(({ id, type }) => {
-        if (includeSelf) {
-          return type === newsFound.type || id === newsFound.id;
-        }
-        return type === newsFound.type && id !== newsFound.id;
-      });
-      if (resultsCount) return results.slice(0, resultsCount);
-    }
+    const { resultsCount = null, includeSelf = false } = options || {};
+
+    results = news.filter(({ id, type }) => {
+      if (includeSelf) {
+        return type === newsFound.type || id === newsFound.id;
+      }
+      return type === newsFound.type && id !== newsFound.id;
+    });
+
+    if (resultsCount) return results.slice(0, resultsCount);
+
     return results;
   };
 
