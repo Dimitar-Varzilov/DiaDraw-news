@@ -5,15 +5,10 @@ import SpeedDial from "../components/SpeedDial";
 import { useAppContext } from "../context/AppProvider";
 import { Link } from "react-router-dom";
 import { Typography } from "@material-tailwind/react";
+import { getSummary } from "../utils/newsUtils";
 
 const Home = () => {
   const { news } = useAppContext();
-
-  const getContentSummary = (content: string, length = 150) => {
-    if (content.length <= length) return content;
-
-    return content.substring(0, length).concat("...");
-  };
 
   return (
     <div className="pb-2 pt-10">
@@ -23,7 +18,7 @@ const Home = () => {
             key={id}
             id={id}
             title={title}
-            content={getContentSummary(content)}
+            content={getSummary(content)}
             newsAdded={created_at}
             type={type}
           />
