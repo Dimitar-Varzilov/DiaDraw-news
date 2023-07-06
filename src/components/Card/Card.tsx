@@ -7,9 +7,10 @@ import {
   Button,
   CardFooter,
 } from "@material-tailwind/react";
-import { NewsType } from "../interfaces/news";
+import { NewsType } from "../../interfaces/news";
 import { useNavigate } from "react-router";
-import LastSeen from "./LastSeen";
+import LastSeen from "../LastSeen";
+import { CardType } from "./CardType";
 
 type Props = {
   id: string;
@@ -18,13 +19,13 @@ type Props = {
   newsAdded: Date;
   type: NewsType;
 };
-export default function Card({
+const Card: React.FC<Props> = ({
   id,
   title,
   content,
   newsAdded,
   type,
-}: Props): React.ReactElement {
+}: Props) => {
   const navigate = useNavigate();
   const onButtonClick = () => navigate(`/newsDetail/${id}`);
   return (
@@ -47,9 +48,7 @@ export default function Card({
         <Typography color="gray" className="mb-8 font-normal">
           {content}
         </Typography>
-        <Button disabled className="max-w-min">
-          {type}
-        </Button>
+        <CardType type={type} />
       </CardBody>
       <CardFooter className="flex flex-none items-center justify-between lg:flex-col">
         <LastSeen date={newsAdded} color="red" />
@@ -64,4 +63,5 @@ export default function Card({
       </CardFooter>
     </MaterialCard>
   );
-}
+};
+export default Card;
