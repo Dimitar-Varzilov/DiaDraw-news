@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
 import React from "react";
 import { createContext, useContext, useState } from "react";
 import { IBaseNews, INews } from "../interfaces/news";
@@ -24,7 +25,7 @@ export interface IAppState {
 
 const initialState: IAppState = {
   news: [],
-  addNews: (news: INews) => news,
+  addNews: (news: INews) => {},
   createNews,
   getNewsById: () => undefined,
   getRelatedNews: () => [],
