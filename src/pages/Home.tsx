@@ -16,12 +16,11 @@ const Home = () => {
         {news.map(({ id, title, content, created_at, type }) => (
           <div key={id} className="w-[70%]">
             <Card
-              id=""
               title={title}
               content={getSummary(content)}
               newsAdded={created_at}
               type={type}
-              // onClick={() => navigate(`/newsDetail/${id}`)}
+              onClick={() => navigate(`/newsDetail/${id}`)}
             />
           </div>
         ))}
