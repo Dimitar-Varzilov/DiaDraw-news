@@ -3,30 +3,26 @@ import { PlusIcon } from "@heroicons/react/24/outline";
 import Card from "../components/Card";
 import SpeedDial from "../components/SpeedDial";
 import { useAppContext } from "../context/AppProvider";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Typography } from "@material-tailwind/react";
+import { getSummary } from "../utils/newsUtils";
 
 const Home = () => {
   const { news } = useAppContext();
-
-  const getContentSummary = (content: string, length = 150) => {
-    if (content.length <= length) return content;
-
-    return content.substring(0, length).concat("...");
-  };
-
+  const navigate = useNavigate();
   return (
     <div className="pb-2 pt-10">
       <div className="flex flex-col items-center justify-center gap-4">
         {news.map(({ id, title, content, created_at, type }) => (
-          <Card
-            key={id}
-            id={id}
-            title={title}
-            content={getContentSummary(content)}
-            newsAdded={created_at}
-            type={type}
-          />
+          <div key={id} className="w-[70%]">
+            <Card
+              title={title}
+              content={getSummary(content)}
+              newsAdded={created_at}
+              type={type}
+              onClick={() => navigate(`/newsDetail/${id}`)}
+            />
+          </div>
         ))}
       </div>
       <SpeedDial>
