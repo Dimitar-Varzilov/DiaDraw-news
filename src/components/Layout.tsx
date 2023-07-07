@@ -7,11 +7,13 @@ import Header from "./Header";
 const Layout: React.FunctionComponent = () => {
   return (
     <AppContextProvider>
-      <Header />
-      <main>
-        <Outlet />
-      </main>
-      <Footer />
+      <div className="relative flex min-h-screen flex-col">
+        <Header />
+        <main>
+          <Outlet />
+        </main>
+        <Footer />
+      </div>
     </AppContextProvider>
   );
 };
