@@ -1,11 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import {
-  Card as MaterialCard,
-  CardBody,
-  CardHeader,
-  Typography,
-} from "@material-tailwind/react";
+import { Typography } from "@material-tailwind/react";
 import { useNavigate } from "react-router-dom";
 
 import { useAppContext } from "../context/AppProvider";
