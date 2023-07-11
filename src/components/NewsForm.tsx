@@ -7,7 +7,7 @@ import {
   Option,
 } from "@material-tailwind/react";
 import React, { useState } from "react";
-// import { FormInput } from "../interfaces/formFields";
+import { FormInput } from "../interfaces/formFields";
 import { IBaseNews, INews, NewsType } from "../interfaces/news";
 
 export type NewsFormProps = {

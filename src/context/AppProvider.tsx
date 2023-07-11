@@ -26,7 +26,7 @@ export interface IAppState {
 
 const initialState: IAppState = {
   news: [],
-  addNews: (news: INews) => {},
+  addNews: (news: INews) => news,
   createNews,
   getNewsById: () => undefined,
   getRelatedNews: () => [],
