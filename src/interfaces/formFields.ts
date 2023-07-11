@@ -1,5 +1,7 @@
+import { INews } from "./news";
+
 export interface FormInput {
-  name: string;
+  name: keyof INews;
   label: string;
   type: string;
   required?: boolean;

@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import {
   Card,
   Button,
@@ -6,9 +7,9 @@ import {
   Select,
   Option,
 } from "@material-tailwind/react";
-import React, { useState } from "react";
-import { FormInput } from "../interfaces/formFields";
 import { IBaseNews, INews, NewsType } from "../interfaces/news";
+import { FormInput } from "../interfaces/formFields";
+
 
 export type NewsFormProps = {
   onCancel(): void;
@@ -41,6 +42,10 @@ type NewsOptions = {
   value: NewsType;
 };
 
+type ToutchedState = {
+  [key in keyof INews]?: boolean;
+};
+
 const newsTypeOptions: NewsOptions[] = Object.entries(NewsType).map(
   ([key, value]) => {
     return {
@@ -51,9 +56,9 @@ const newsTypeOptions: NewsOptions[] = Object.entries(NewsType).map(
 );
 const NewsForm: React.FC<NewsFormProps> = ({ onCancel, onSubmit }) => {
   const [formData, setFormData] = useState<IBaseNews | INews>(initialState);
-  const [formTouched, setFormTouched] = useState(false);
-  const hasError = (name: string) =>
-    formTouched && formData[name as keyof IBaseNews].length === 0;
+  const [formTouched, setFormTouched] = useState<ToutchedState>({});
+  const hasError = (name: keyof INews) =>
+    formTouched[name] && formData[name as keyof IBaseNews].length === 0;
 
   const handleSubmit: React.FormEventHandler<HTMLFormElement> = (
     ev: React.FormEvent<HTMLFormElement>
@@ -73,7 +78,9 @@ const NewsForm: React.FC<NewsFormProps> = ({ onCancel, onSubmit }) => {
           {inputs.map(({ label, name, type, required }, index) => (
             <div key={index}>
               <Input
-                onBlur={() => setFormTouched(() => true)}
+                onBlur={() =>
+                  setFormTouched((curr) => ({ ...curr, [name]: true }))
+                }
                 id={name}
                 size="lg"
                 label={label}
@@ -116,7 +123,9 @@ const NewsForm: React.FC<NewsFormProps> = ({ onCancel, onSubmit }) => {
           </Select>
           <div>
             <Textarea
-              onBlur={() => setFormTouched(() => true)}
+              onBlur={() =>
+                setFormTouched((curr) => ({ ...curr, content: true }))
+              }
               label="Content*"
               name="content"
               required
