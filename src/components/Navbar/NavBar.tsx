@@ -30,8 +30,9 @@ export function NavBar() {
         <div className="relative hidden lg:block">
           <SearchBar
             searchCallback={searchCallback}
-            news={searchResults}
+            results={searchResults}
             resultItemProps={{ onListClick }}
+            clearResults={() => setSearchResults([])}
           />
         </div>
         <div className="hidden lg:block">

@@ -1,34 +1,26 @@
-import { Card, ListItem } from "@material-tailwind/react";
 import React from "react";
+import { Card, ListItem } from "@material-tailwind/react";
 
-export interface IListItem {
-  value: string;
-  onClick: () => void;
+export interface ListItem {
+  title: string;
+  onClick(): void;
 }
 
 export type ListProps = {
-  listItems: IListItem[];
+  items: ListItem[];
   className?: string;
-  hide?: boolean;
 };
 
-const List: React.FC<ListProps> = ({
-  listItems: items,
-  className,
-  hide,
-}: ListProps) => {
+const List: React.FC<ListProps> = ({ items, className }: ListProps) => {
   return (
-    !hide && (
-      <Card className={` ${className && className}`}>
-        {items.map(({ value, onClick }, index) => (
-          <ListItem key={index} onClick={() => onClick()}>
-            {value}
-          </ListItem>
-        ))}
-      </Card>
-    )
+    <Card className={className}>
+      {items.map(({ title, onClick }) => (
+        <ListItem key={title} onClick={onClick}>
+          {title}
+        </ListItem>
+      ))}
+    </Card>
   );
 };
 
-// export default React.memo(List);
 export default List;

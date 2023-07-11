@@ -1,47 +1,72 @@
-import React, { useEffect } from "react";
+import React, {  useEffect, useRef } from "react";
 import { ChangeEvent, useState } from "react";
 import Input from "@material-tailwind/react/components/Input";
 import { IconButton } from "@material-tailwind/react";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
-import List, { IListItem } from "./List";
+import List from "./List";
 import { INews } from "../interfaces/news";
 
 type Props = {
-  news: INews[];
+  results: INews[];
   searchCallback(query: string): void;
+  clearResults(): void;
   resultItemProps: {
     onListClick(news: INews): void;
   };
 };
 
-const SearchBar = ({ news, searchCallback, resultItemProps }: Props) => {
+const SearchBar = ({
+  results,
+  searchCallback,
+  resultItemProps,
+  clearResults,
+}: Props) => {
   const [query, setQuery] = useState("");
-  const [results, setResults] = useState<IListItem[]>([]);
+  const searchRef = useRef<HTMLDivElement>(null);
 
   const handleChange = (ev: ChangeEvent<HTMLInputElement>) =>
     setQuery(() => ev.target.value);
 
   const handleSearch = () => {
+    if (query.length === 0) return;
     searchCallback(query);
   };
 
   useEffect(() => {
-    setResults(() =>
-      news.map((news) => {
-        return {
-          value: news.title,
-          onClick: () => {
-            resultItemProps.onListClick(news);
-            setResults(() => []);
-            setQuery(() => "");
-          },
-        };
-      })
-    );
-  }, [news]);
+    const listener = (event: Event) => {
+      const element = searchRef?.current;
+      if (!element || element.contains((event?.target as Node) || null)) {
+        return;
+      }
+
+      if (results.length < 1) return;
+
+      clearResults();
+    };
+
+    document.addEventListener("click", listener);
+
+    return () => {
+      document.removeEventListener("click", listener);
+    };
+  }, [results.length]);
+
+  const getListItems = (): {
+    title: string;
+    onClick(): void;
+  }[] =>
+    results.map((news) => {
+      return {
+        title: news.title,
+        onClick: () => {
+          resultItemProps.onListClick(news);
+          setQuery(() => "");
+        },
+      };
+    });
 
   return (
-    <div className="relative flex w-full gap-2 md:w-max">
+    <div className="relative flex w-full gap-2 md:w-max" ref={searchRef}>
       <Input
         type="search"
         label="Seacrh news..."
@@ -60,11 +85,10 @@ const SearchBar = ({ news, searchCallback, resultItemProps }: Props) => {
       >
         <MagnifyingGlassIcon className="h-6 w-6 text-white" strokeWidth={2} />
       </IconButton>
-      {news.length > 0 && (
-        <div className="absolute top-14">
-          <List listItems={results} />
-        </div>
-      )}
+
+      <div className="absolute top-10">
+        <List items={getListItems()} />
+      </div>
     </div>
   );
 };
