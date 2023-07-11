@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import {
   Card,
   Button,
@@ -6,21 +7,14 @@ import {
   Select,
   Option,
 } from "@material-tailwind/react";
-import React, { useState } from "react";
-// import { FormInput } from "../interfaces/formFields";
 import { IBaseNews, INews, NewsType } from "../interfaces/news";
+import { FormInput } from "../interfaces/formFields";
+
 
 export type NewsFormProps = {
   onCancel(): void;
   onSubmit(formData: IBaseNews | INews): void;
 };
-
-export interface FormInput {
-  name: keyof INews;
-  label: string;
-  type: string;
-  required?: boolean;
-}
 
 const inputs: FormInput[] = [
   {
