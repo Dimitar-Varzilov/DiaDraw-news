@@ -1,11 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import {
-  Card as MaterialCard,
-  CardBody,
-  CardHeader,
-  Typography,
-} from "@material-tailwind/react";
+import { Typography } from "@material-tailwind/react";
 import { useNavigate } from "react-router-dom";
 
 import { useAppContext } from "../context/AppProvider";
@@ -29,22 +24,25 @@ const Detail: React.FC = () => {
   }, [id]);
 
   return (
-    <div className="flex">
-      <article className="w-2/3 p-10 py-24">
+    <div
+      className="flex"
+      style={{
+        height: "calc(100vh - 150px)",
+      }}
+    >
+      <article className="relative w-2/3">
         {newsToShow ? (
-          <MaterialCard>
-            <CardHeader>
-              <Typography variant="h4" className="text-center">
-                {newsToShow.title}
-              </Typography>
-            </CardHeader>
-            <CardBody>{newsToShow.content}</CardBody>
-          </MaterialCard>
+          <div className="p-6 text-center">
+            <Typography variant="h3" className="my-6 text-center">
+              {newsToShow.title}
+            </Typography>
+            <p>{newsToShow.content}</p>
+          </div>
         ) : (
           <Typography variant="h3">News not found</Typography>
         )}
       </article>
-      <aside className="flex w-1/3 flex-col gap-4 border-2 border-black px-2 py-4">
+      <aside className="flex h-full w-1/3 flex-col gap-4 border-2 border-black px-2 py-4">
         <Typography variant="h3" className="text-center">
           Related News
         </Typography>
