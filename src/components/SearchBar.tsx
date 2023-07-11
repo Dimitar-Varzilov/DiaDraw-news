@@ -1,4 +1,4 @@
-import React, {  useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { ChangeEvent, useState } from "react";
 import Input from "@material-tailwind/react/components/Input";
 import { IconButton } from "@material-tailwind/react";
@@ -61,6 +61,7 @@ const SearchBar = ({
         onClick: () => {
           resultItemProps.onListClick(news);
           setQuery(() => "");
+          clearResults();
         },
       };
     });
