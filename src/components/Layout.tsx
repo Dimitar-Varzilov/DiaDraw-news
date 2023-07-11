@@ -3,7 +3,7 @@ import Footer from "./Footer";
 import { Outlet } from "react-router-dom";
 import { Provider } from "react-redux";
 import Header from "./Header";
-import { store } from "../store/store";
+import { store } from "../store";
 
 const Layout: React.FunctionComponent = () => {
   return (

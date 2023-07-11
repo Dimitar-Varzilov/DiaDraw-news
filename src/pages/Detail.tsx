@@ -1,28 +1,25 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useParams } from "react-router";
 import { Typography } from "@material-tailwind/react";
 import { useNavigate } from "react-router-dom";
-
-import { useAppContext } from "../context/AppProvider";
 import { INews } from "../interfaces/news";
 import { getSummary } from "../utils/newsUtils";
 import Card from "../components/Card";
+import {
+  selectNewsById,
+  selectRelatedNews,
+} from "../store/features/news/newsSlice";
+import { useAppSelector } from "../store/hooks";
 
 const Detail: React.FC = () => {
-  const { getNewsById, getRelatedNews } = useAppContext();
-  const [newsToShow, setNewsToShow] = useState<INews | undefined>(undefined);
-  const [relatedNews, setRelatedNews] = useState<INews[]>([]);
   const { id } = useParams();
+
+  const newsToShow = useAppSelector((state) => selectNewsById(state, id));
+  const relatedNews: INews[] = useAppSelector((state) => {
+    if (id) return selectRelatedNews(state, id);
+    return [];
+  });
   const navigate = useNavigate();
-
-  useEffect(() => {
-    if (id) {
-      setNewsToShow(() => getNewsById(id));
-      const foundRelatedNews = getRelatedNews(id, { resultsCount: 5 });
-      setRelatedNews(() => foundRelatedNews);
-    }
-  }, [id]);
-
   return (
     <div
       className="flex"
