@@ -2,13 +2,14 @@ import React from "react";
 import { PlusIcon } from "@heroicons/react/24/outline";
 import Card from "../components/Card";
 import SpeedDial from "../components/SpeedDial";
-import { useAppContext } from "../context/AppProvider";
+import { useAppSelector } from "../store/hooks";
 import { Link, useNavigate } from "react-router-dom";
 import { Typography } from "@material-tailwind/react";
 import { getSummary } from "../utils/newsUtils";
+import { selectNewslistFromRoot } from "../store/features/news/newsSlice";
 
 const Home = () => {
-  const { news } = useAppContext();
+  const news = useAppSelector((state) => state.news.newsList);
   const navigate = useNavigate();
   return (
     <div className="pb-2 pt-10">

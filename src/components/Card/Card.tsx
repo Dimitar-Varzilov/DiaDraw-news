@@ -15,7 +15,7 @@ type Props = {
   title: string;
   small?: boolean;
   content?: string;
-  newsAdded?: Date;
+  newsAdded?: number;
   type?: NewsType;
   onClick: () => void;
 };

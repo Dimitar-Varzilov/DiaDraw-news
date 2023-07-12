@@ -1,12 +1,13 @@
 import React from "react";
 import Footer from "./Footer";
 import { Outlet } from "react-router-dom";
-import AppContextProvider from "../context/AppProvider";
+import { Provider } from "react-redux";
 import Header from "./Header";
+import { store } from "../store";
 
 const Layout: React.FunctionComponent = () => {
   return (
-    <AppContextProvider>
+    <Provider store={store}>
       <div className="relative flex min-h-screen flex-col">
         <Header />
         <main>
@@ -14,7 +15,7 @@ const Layout: React.FunctionComponent = () => {
         </main>
         <Footer />
       </div>
-    </AppContextProvider>
+    </Provider>
   );
 };
 

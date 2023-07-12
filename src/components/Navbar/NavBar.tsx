@@ -4,17 +4,18 @@ import SearchBar from "../SearchBar";
 import NavList from "./NavList";
 import Logo from "../Logo";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import { useAppContext } from "../../context/AppProvider";
 import { useNavigate } from "react-router-dom";
 import { INews } from "../../interfaces/news";
+import { useAppSelector } from "../../store/hooks";
 
 export function NavBar() {
-  const { news } = useAppContext();
+  const news = useAppSelector((state) => state.news.newsList);
   const navigate = useNavigate();
   const [searchResults, setSearchResults] = useState<INews[]>([]);
   const [openNav, setOpenNav] = useState(false);
-
+  
   const onListClick = (news: INews) => navigate(`/newsDetail/${news.id}`);
+
   const searchCallback = (query: string) => {
     setSearchResults(() => {
       return news.filter((news) =>

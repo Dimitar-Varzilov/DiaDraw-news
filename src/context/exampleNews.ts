@@ -3,12 +3,12 @@ import { v4 as generateUUID } from "uuid";
 
 export const exampleNews: INews[] = [
   {
-    id: generateUUID(),
+    id: "476db47a-3910-4811-9731-1ff910c4473a",
     title: "Lorem Ipsum",
     content:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum risus turpis, mollis at commodo nec, accumsan sed enim. Nunc consequat massa at velit dignissim, ut imperdiet risus feugiat. Curabitur tellus mi, auctor a velit id, luctus egestas lacus. Maecenas eu ex ac metus euismod pulvinar in nec neque. Sed lobortis gravida ipsum, eget sodales leo tempus ut. Sed luctus varius est vitae fermentum. Integer tempus, metus id pretium euismod, nibh sem molestie ante",
     author: "John Doe",
-    created_at: new Date("2023-06-30 16:00"), //Todo: Date in milliseconds
+    created_at: new Date("2023-06-30 16:00").getTime(), //Todo: Date in milliseconds
     type: NewsType.Politics,
   },
   {
@@ -17,7 +17,7 @@ export const exampleNews: INews[] = [
     content:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum risus turpis, mollis at commodo nec, accumsan sed enim. Nunc consequat massa at velit dignissim, ut imperdiet risus feugiat. Curabitur tellus mi, auctor a velit id, luctus egestas lacus. Maecenas eu ex ac metus euismod pulvinar in nec neque. Sed lobortis gravida ipsum, eget sodales leo tempus ut. Sed luctus varius est vitae fermentum. Integer tempus, metus id pretium euismod, nibh sem molestie ante",
     author: "John Doe",
-    created_at: new Date("2023-06-30 10:00"),
+    created_at: new Date("2023-06-30 10:00").getTime(),
     type: NewsType.Sport,
   },
   {
@@ -26,7 +26,7 @@ export const exampleNews: INews[] = [
     content:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum risus turpis, mollis at commodo nec, accumsan sed enim. Nunc consequat massa at velit dignissim, ut imperdiet risus feugiat. Curabitur tellus mi, auctor a velit id, luctus egestas lacus. Maecenas eu ex ac metus euismod pulvinar in nec neque. Sed lobortis gravida ipsum, eget sodales leo tempus ut. Sed luctus varius est vitae fermentum. Integer tempus, metus id pretium euismod, nibh sem molestie ante",
     author: "John Doe",
-    created_at: new Date("2023-06-27"),
+    created_at: new Date("2023-06-27").getTime(),
     type: NewsType.Funny,
   },
   {
@@ -35,7 +35,7 @@ export const exampleNews: INews[] = [
     content:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum risus turpis, mollis at commodo nec, accumsan sed enim. Nunc consequat massa at velit dignissim, ut imperdiet risus feugiat. Curabitur tellus mi, auctor a velit id, luctus egestas lacus. Maecenas eu ex ac metus euismod pulvinar in nec neque. Sed lobortis gravida ipsum, eget sodales leo tempus ut. Sed luctus varius est vitae fermentum. Integer tempus, metus id pretium euismod, nibh sem molestie ante",
     author: "John Doe",
-    created_at: new Date("2021-01-01"),
+    created_at: new Date("2021-01-01").getTime(),
     type: NewsType.Sad,
   },
   {
@@ -44,7 +44,7 @@ export const exampleNews: INews[] = [
     content:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum risus turpis, mollis at commodo nec, accumsan sed enim. Nunc consequat massa at velit dignissim, ut imperdiet risus feugiat. Curabitur tellus mi, auctor a velit id, luctus egestas lacus. Maecenas eu ex ac metus euismod pulvinar in nec neque. Sed lobortis gravida ipsum, eget sodales leo tempus ut. Sed luctus varius est vitae fermentum. Integer tempus, metus id pretium euismod, nibh sem molestie ante",
     author: "John Doe",
-    created_at: new Date("2021-01-01"),
+    created_at: new Date("2021-01-01").getTime(),
     type: NewsType.Politics,
   },
   {
@@ -53,7 +53,7 @@ export const exampleNews: INews[] = [
     content:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum risus turpis, mollis at commodo nec, accumsan sed enim. Nunc consequat massa at velit dignissim, ut imperdiet risus feugiat. Curabitur tellus mi, auctor a velit id, luctus egestas lacus. Maecenas eu ex ac metus euismod pulvinar in nec neque. Sed lobortis gravida ipsum, eget sodales leo tempus ut. Sed luctus varius est vitae fermentum. Integer tempus, metus id pretium euismod, nibh sem molestie ante",
     author: "John Doe",
-    created_at: new Date("2021-01-01"),
+    created_at: new Date("2021-01-01").getTime(),
     type: NewsType.Sport,
   },
 ];

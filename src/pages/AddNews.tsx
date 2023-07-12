@@ -1,17 +1,18 @@
 import React from "react";
 import NewsForm, { NewsFormProps } from "../components/NewsForm";
-import { useAppContext } from "../context/AppProvider";
 import { useNavigate } from "react-router-dom";
-import { createNews } from "../context/contextUtils";
 import { IBaseNews, INews } from "../interfaces/news";
+import { createNews } from "../store/features/news/utils";
+import { addNews } from "../store/features/news/newsSlice";
+import { useAppDispatch } from "../store/hooks";
 
 const AddNews = () => {
-  const { addNews } = useAppContext();
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const onCancel = () => navigate(-1);
   const onSubmit = (formData: IBaseNews | INews) => {
     const newNews = createNews(formData);
-    addNews(newNews);
+    dispatch(addNews(newNews));
   };
   const formProps: NewsFormProps = {
     onCancel,

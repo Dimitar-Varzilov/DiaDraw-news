@@ -7,7 +7,7 @@ export interface IBaseNews {
 
 export interface INews extends IBaseNews {
   id: string;
-  created_at: Date;
+  created_at: number;
 }
 
 export enum NewsType {
