@@ -4,7 +4,7 @@ import { color } from "@material-tailwind/react/types/components/typography";
 import ReactTimeAgo from "react-time-ago";
 
 type Props = {
-  date: number | Date;
+  date: number;
   color?: color;
 };
 

@@ -20,7 +20,6 @@ export const newsSlice = createSlice({
         (a: INews, b: INews) => b.created_at - a.created_at
       );
     },
-    selectNews: (state) => state,
   },
 });
 
@@ -28,7 +27,6 @@ export default newsSlice.reducer;
 
 export const { addNews } = newsSlice.actions;
 
-export const selectNews = (state: RootState) => state.news;
 export const selectNewslistFromRoot = (state: RootState) => state.news.newsList;
 export const selectNewsId = (newsList: RootState, itemId: string | undefined) =>
   itemId;
@@ -39,12 +37,11 @@ export const selectNewsById = createSelector(
 );
 
 export const selectRelatedNews = createSelector(
-  (state: RootState) => state,
-  selectNewsId,
-  (rootState, newsId) => filterNewsById(rootState, newsId)
+  [(rootState: RootState) => rootState, selectNewsId],
+  (rootState, newsId) => getRelatedNews(rootState, newsId)
 );
 
-export const filterNewsById = (
+export const getRelatedNews = (
   news: RootState,
   id: string | undefined,
   options?: {
