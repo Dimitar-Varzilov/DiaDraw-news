@@ -13,7 +13,7 @@ public
 dist-*
 
 # Editor directories and files
-.vscode
+/.vscode/
 .debug.env
 .idea
 .DS_Store
