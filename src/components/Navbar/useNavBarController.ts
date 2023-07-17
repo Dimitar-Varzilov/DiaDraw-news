@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { INews } from "../../interfaces/news";
 import { useAppSelector } from "../../store/hooks";
 
-export default function navBarController() {
+export default function useNavBarController() {
   const news = useAppSelector((state) => state.news.newsList);
   const navigate = useNavigate();
   const [searchResults, setSearchResults] = useState<INews[]>([]);

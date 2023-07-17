@@ -3,11 +3,11 @@ import Input from "@material-tailwind/react/components/Input";
 import { IconButton } from "@material-tailwind/react";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import List from "../List";
-import searchBarController from "./searchBarController";
+import useSearchBarController from "./useSearchBarController";
 
 const SearchBar = (props: any) => {
   const { getListItems, handleChange, handleSearch, query, searchRef } =
-    searchBarController(props);
+    useSearchBarController(props);
   return (
     <div className="relative flex w-full gap-2 md:w-max" ref={searchRef}>
       <Input

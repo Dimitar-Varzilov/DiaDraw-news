@@ -9,7 +9,7 @@ import {
 } from "@material-tailwind/react";
 import { IBaseNews, INews, NewsType } from "../../interfaces/news";
 import { FormInput } from "../../interfaces/formFields";
-import newsFormController from "./newsFormController";
+import useNewsFormController from "./useNewsFormController";
 
 export type NewsFormProps = {
   onCancel(): void;
@@ -57,7 +57,7 @@ const NewsForm: React.FC<NewsFormProps> = ({ onCancel, onSubmit }) => {
     hasError,
     setFormData,
     setFormTouched,
-  } = newsFormController(onSubmit);
+  } = useNewsFormController(onSubmit);
 
   return (
     <Card color="transparent" shadow={false}>

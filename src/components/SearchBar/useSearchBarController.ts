@@ -11,7 +11,7 @@ type Props = {
   };
 };
 
-export default function searchBarController({
+export default function useSearchBarController({
   results,
   searchCallback,
   resultItemProps,

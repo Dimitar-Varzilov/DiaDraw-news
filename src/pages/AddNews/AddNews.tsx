@@ -1,9 +1,9 @@
 import React from "react";
 import NewsForm from "../../components/NewsForm/NewsForm";
-import addNewsController from "./addNewsController";
+import useAddNewsController from "./useAddNewsController";
 
 const AddNews = () => {
-  const { formProps } = addNewsController();
+  const { formProps } = useAddNewsController();
   return (
     <div className="flex h-screen justify-center">
       <NewsForm {...formProps} />

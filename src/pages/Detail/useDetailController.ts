@@ -6,7 +6,7 @@ import {
 } from "../../store/features/news/newsSlice";
 import { useAppSelector } from "../../store/hooks";
 
-export default function detailController() {
+export default function useDetailController() {
   const { id } = useParams();
   const navigate = useNavigate();
 

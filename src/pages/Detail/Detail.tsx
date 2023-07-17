@@ -2,10 +2,10 @@ import React from "react";
 import { Typography } from "@material-tailwind/react";
 import { getSummary } from "../../utils/newsUtils";
 import Card from "../../components/Card";
-import detailController from "./detailController";
+import useDetailController from "./useDetailController";
 
 const Detail: React.FC = () => {
-  const { navigate, newsToShow, relatedNews } = detailController();
+  const { navigate, newsToShow, relatedNews } = useDetailController();
   return (
     <div
       className="flex"
@@ -43,4 +43,4 @@ const Detail: React.FC = () => {
   );
 };
 
-export {Detail};
+export { Detail };

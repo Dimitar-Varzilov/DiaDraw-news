@@ -5,10 +5,10 @@ import SpeedDial from "../../components/SpeedDial";
 import { Link } from "react-router-dom";
 import { Typography } from "@material-tailwind/react";
 import { getSummary } from "../../utils/newsUtils";
-import homeController from "./homeController";
+import useHomeController from "./useHomeController";
 
 const Home = () => {
-  const { news, navigate } = homeController();
+  const { news, navigate } = useHomeController();
   return (
     <div className="pb-2 pt-10">
       <div className="flex flex-col items-center justify-center gap-4">

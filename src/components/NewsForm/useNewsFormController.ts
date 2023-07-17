@@ -9,7 +9,7 @@ const initialState: IBaseNews = {
   content: "",
 };
 
-export default function newsFormController(
+export default function useNewsFormController(
   onSubmit: (formData: IBaseNews | INews) => void
 ) {
   const [formData, setFormData] = useState<IBaseNews | INews>(initialState);
@@ -23,6 +23,13 @@ export default function newsFormController(
     ev.preventDefault();
     ev.stopPropagation();
     onSubmit(formData);
-    };
-    return {handleSubmit,setFormTouched,setFormData,formData,formTouched,hasError}
+  };
+  return {
+    handleSubmit,
+    setFormTouched,
+    setFormData,
+    formData,
+    formTouched,
+    hasError,
+  };
 }

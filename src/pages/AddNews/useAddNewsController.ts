@@ -5,7 +5,7 @@ import { addNews } from "../../store/features/news/newsSlice";
 import { createNews } from "../../store/features/news/utils";
 import { useAppDispatch } from "../../store/hooks";
 
-export default function addNewsController() {
+export default function useAddNewsController() {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const onCancel = () => navigate(-1);

@@ -4,7 +4,7 @@ import SearchBar from "../SearchBar/SearchBar";
 import NavList from "./NavList";
 import Logo from "../Logo";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import navBarController from "./navbarController";
+import useNavBarController from "./useNavBarController";
 
 export function NavBar() {
   const {
@@ -14,7 +14,7 @@ export function NavBar() {
     setSearchResults,
     setOpenNav,
     openNav,
-  } = navBarController();
+  } = useNavBarController();
 
   return (
     <Navbar className="m-0 w-full max-w-full px-20 py-3">
