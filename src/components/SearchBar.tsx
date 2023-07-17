@@ -70,7 +70,7 @@ const SearchBar = ({
     <div className="relative flex w-full gap-2 md:w-max" ref={searchRef}>
       <Input
         type="search"
-        label="Seacrh news..."
+        label="Search news..."
         className="pr-20"
         containerProps={{
           className: "min-w-[288px]",
