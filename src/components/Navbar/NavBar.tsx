@@ -1,6 +1,6 @@
 import React from "react";
 import { Collapse, IconButton, Navbar } from "@material-tailwind/react";
-import SearchBar from "../SearchBar/SearchBar";
+import SearchBar from "../SearchBar";
 import NavList from "./NavList";
 import Logo from "../Logo";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
