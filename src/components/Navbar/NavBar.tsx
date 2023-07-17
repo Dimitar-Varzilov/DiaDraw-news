@@ -1,28 +1,20 @@
-import React, { useState } from "react";
+import React from "react";
 import { Collapse, IconButton, Navbar } from "@material-tailwind/react";
-import SearchBar from "../SearchBar";
+import SearchBar from "../SearchBar/SearchBar";
 import NavList from "./NavList";
 import Logo from "../Logo";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import { useNavigate } from "react-router-dom";
-import { INews } from "../../interfaces/news";
-import { useAppSelector } from "../../store/hooks";
+import navBarController from "./navbarController";
 
 export function NavBar() {
-  const news = useAppSelector((state) => state.news.newsList);
-  const navigate = useNavigate();
-  const [searchResults, setSearchResults] = useState<INews[]>([]);
-  const [openNav, setOpenNav] = useState(false);
-  
-  const onListClick = (news: INews) => navigate(`/newsDetail/${news.id}`);
-
-  const searchCallback = (query: string) => {
-    setSearchResults(() => {
-      return news.filter((news) =>
-        news.title.toLowerCase().includes(query.toLowerCase())
-      );
-    });
-  };
+  const {
+    searchCallback,
+    searchResults,
+    onListClick,
+    setSearchResults,
+    setOpenNav,
+    openNav,
+  } = navBarController();
 
   return (
     <Navbar className="m-0 w-full max-w-full px-20 py-3">

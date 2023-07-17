@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Card,
   Button,
@@ -7,9 +7,9 @@ import {
   Select,
   Option,
 } from "@material-tailwind/react";
-import { IBaseNews, INews, NewsType } from "../interfaces/news";
-import { FormInput } from "../interfaces/formFields";
-
+import { IBaseNews, INews, NewsType } from "../../interfaces/news";
+import { FormInput } from "../../interfaces/formFields";
+import newsFormController from "./newsFormController";
 
 export type NewsFormProps = {
   onCancel(): void;
@@ -30,19 +30,13 @@ const inputs: FormInput[] = [
     required: true,
   },
 ];
-const initialState: IBaseNews = {
-  title: "",
-  author: "",
-  type: NewsType.Funny,
-  content: "",
-};
 
 type NewsOptions = {
   label: string;
   value: NewsType;
 };
 
-type ToutchedState = {
+export type TouchedState = {
   [key in keyof INews]?: boolean;
 };
 
@@ -54,19 +48,17 @@ const newsTypeOptions: NewsOptions[] = Object.entries(NewsType).map(
     };
   }
 );
-const NewsForm: React.FC<NewsFormProps> = ({ onCancel, onSubmit }) => {
-  const [formData, setFormData] = useState<IBaseNews | INews>(initialState);
-  const [formTouched, setFormTouched] = useState<ToutchedState>({});
-  const hasError = (name: keyof INews) =>
-    formTouched[name] && formData[name as keyof IBaseNews].length === 0;
 
-  const handleSubmit: React.FormEventHandler<HTMLFormElement> = (
-    ev: React.FormEvent<HTMLFormElement>
-  ) => {
-    ev.preventDefault();
-    ev.stopPropagation();
-    onSubmit(formData);
-  };
+const NewsForm: React.FC<NewsFormProps> = ({ onCancel, onSubmit }) => {
+  const {
+    formData,
+    formTouched,
+    handleSubmit,
+    hasError,
+    setFormData,
+    setFormTouched,
+  } = newsFormController(onSubmit);
+
   return (
     <Card color="transparent" shadow={false}>
       <form

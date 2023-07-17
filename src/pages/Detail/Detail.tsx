@@ -1,25 +1,11 @@
 import React from "react";
-import { useParams } from "react-router";
 import { Typography } from "@material-tailwind/react";
-import { useNavigate } from "react-router-dom";
-import { INews } from "../interfaces/news";
-import { getSummary } from "../utils/newsUtils";
-import Card from "../components/Card";
-import {
-  selectNewsById,
-  selectRelatedNews,
-} from "../store/features/news/newsSlice";
-import { useAppSelector } from "../store/hooks";
+import { getSummary } from "../../utils/newsUtils";
+import Card from "../../components/Card";
+import detailController from "./detailController";
 
 const Detail: React.FC = () => {
-  const { id } = useParams();
-
-  const newsToShow = useAppSelector((state) => selectNewsById(state, id));
-  const relatedNews: INews[] = useAppSelector((state) => {
-    if (id) return selectRelatedNews(state, id);
-    return [];
-  });
-  const navigate = useNavigate();
+  const { navigate, newsToShow, relatedNews } = detailController();
   return (
     <div
       className="flex"
@@ -57,4 +43,4 @@ const Detail: React.FC = () => {
   );
 };
 
-export default Detail;
+export {Detail};
