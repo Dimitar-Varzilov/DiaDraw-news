@@ -17,9 +17,9 @@ export default function useEventListener(
   }, [callback]);
 
   useEffect(() => {
-    const handler = (e: Event) => callbackRef.current(e);
+    const handler = callbackRef.current;
     element.addEventListener(eventType, handler);
 
     return () => element.removeEventListener(eventType, handler);
-  }, [eventType, element, deps]);
+  }, [eventType, element, ...deps]);
 }
