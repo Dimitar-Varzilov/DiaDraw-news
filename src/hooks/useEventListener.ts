@@ -1,16 +1,16 @@
 import { useEffect, useRef } from "react";
 
-interface IOptions {
-  element?: Document | Window | HTMLElement;
+interface useEventListenerOptions {
   deps?: any[];
 }
 
 export default function useEventListener(
   eventType: string | keyof DocumentEventMap,
   callback: (ev: Event) => void,
-  options: IOptions = {}
+  element: Document | Window | HTMLElement = document,
+  options: useEventListenerOptions = {}
 ) {
-  const { deps = [], element = document } = options;
+  const { deps = [] } = options;
   const callbackRef = useRef(callback);
   useEffect(() => {
     callbackRef.current = callback;
